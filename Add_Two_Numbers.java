@@ -4,6 +4,7 @@ public class Add_Two_Numbers {
   public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
     int carryOver = (l1.val + l2.val)/10;
     ListNode l3 = new ListNode((l1.val + l2.val)%10);
+    ListNode head = l3;
     while(l1.next != null && l2.next != null) {
       l1 = l1.next;
       l2 = l2.next;
@@ -13,7 +14,18 @@ public class Add_Two_Numbers {
     }
     //Once the end of one of the linked list append to the end of the new linked list and carrying over when necessary
     ListNode trailingL = l1.next == null? l2 : l1;
-  
-  }
+    while(carryOver != 0) {
+      if(trailingL.next == null) {
+        trailingL.next = new ListNode(1);
+        break;
+      }
+      else {
+        trailingL = trailingL.next;
+        carryOver = (trailingL.val+1)/10;
+        trailingL.val = (trailingL.val+1)%10;
+      }
+    }
+    return head;
 
+  }
 }
