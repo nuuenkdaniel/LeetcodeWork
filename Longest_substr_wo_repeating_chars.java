@@ -8,11 +8,12 @@ public class Longest_substr_wo_repeating_chars {
 
     // Loop through each letter and check whether it repeats
     for(int i = 0; i < s.length(); i++) {
-      // Check if character is already in the substry by comparing against the hashmap if it does compare new substr with prev max
+      // Check if character is already in the substr by comparing against the hashmap if it does compare new substr with prev max
       if(hashed_chars.get(s.charAt(i)) != null) {
         if(max_substr_length < curr_substr_length) max_substr_length = curr_substr_length;
         hashed_chars.clear();
-        curr_substr_length = 0;
+        hashed_chars.put(s.charAt(i), true);
+        curr_substr_length = 1;
       }
       else {
         hashed_chars.put(s.charAt(i), true);
