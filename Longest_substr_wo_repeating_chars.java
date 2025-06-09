@@ -1,26 +1,30 @@
 import java.util.HashMap;
 
 public class Longest_substr_wo_repeating_chars {
-  public int longest_substr(String s) {
+  public static int longest_substr(String s) {
     int max_substr_length = 0;
-    int curr_substr_length = 0;
-    HashMap<Character, Boolean> hashed_chars = new HashMap<Character, Boolean>();
+    HashMap<Character, Integer> hashed_chars = new HashMap<Character, Integer>();
 
-    // Loop through each letter and check whether it repeats
-    for(int i = 0; i < s.length(); i++) {
-      // Check if character is already in the substr by comparing against the hashmap if it does compare new substr with prev max
-      if(hashed_chars.get(s.charAt(i)) != null) {
-        if(max_substr_length < curr_substr_length) max_substr_length = curr_substr_length;
-        hashed_chars.clear();
-        hashed_chars.put(s.charAt(i), true);
-        curr_substr_length = 1;
-      }
+    int left, right;
+    left = right = 0;
+    for(; right < s.length(); right++) {
+      char c = s.charAt(right);
+      // Put character and starting index into table if it doesn't exist or is outdated
+      if(!hashed_chars.containsKey(c) || hashed_chars.get(c) < left)
+        hashed_chars.put(c, right);
       else {
-        hashed_chars.put(s.charAt(i), true);
-        curr_substr_length++;
+        // Set new max substr len and update the last known index of character as well as the left index to the repeating character
+        max_substr_length = Math.max(max_substr_length, right-left);
+        left = hashed_chars.get(c)+1;
+        hashed_chars.put(c, right);
       }
+      System.out.println(left);
     }
-    if(max_substr_length < curr_substr_length) max_substr_length = curr_substr_length;
-    return max_substr_length;
+    return Math.max(max_substr_length, right-left);
+  }
+
+  public static void main(String[] args) {
+    String s = "abba";
+    System.out.println(longest_substr(s));
   }
 }
