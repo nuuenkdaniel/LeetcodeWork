@@ -12,7 +12,7 @@ public class Two_sums {
     int secondSum;
     for(int j = 0; j < num.length; j++) {
       secondSum = target - num[j];
-      if(hashedArr.containsKey(secondSum) && hashedArr.getSecondSum != j) return new int[] {j, hashedArr.get(secondSum)};
+      if(hashedArr.containsKey(secondSum) && hashedArr.get(secondSum) != j) return new int[] {j, hashedArr.get(secondSum)};
     }
     
     throw new IllegalArgumentException("Solution not found");

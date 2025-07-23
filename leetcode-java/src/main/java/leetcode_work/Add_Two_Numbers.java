@@ -1,4 +1,14 @@
+package leetcode_work;
+
 public class Add_Two_Numbers {
+
+  class ListNode {
+    int val;
+    ListNode next;
+    ListNode() {}
+    ListNode(int val) { this.val = val; }
+    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+  }
 
   //While loop through both linked list and add the values together while carrying over when necessary
   public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
