@@ -25,6 +25,6 @@ class Is_Anagram_Test {
     String s1 = "JohnWick";
     String s2 = "Jhimothy";
     Boolean result = Is_Anagram.isAnagram(s1, s2);
-    assertEquals(true, result);
+    assertEquals(false, result);
   }
 }
