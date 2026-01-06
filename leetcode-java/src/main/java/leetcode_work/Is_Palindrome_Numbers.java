@@ -11,8 +11,6 @@ public class Is_Palindrome_Numbers {
       reversed += (long)x%(i*10)/i;
       i *= 10;
     }
-    System.out.println(x);
-    System.out.println(reversed);
     if(reversed == x) return true;
     return false;
   }
