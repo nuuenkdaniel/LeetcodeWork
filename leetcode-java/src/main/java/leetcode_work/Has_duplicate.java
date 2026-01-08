@@ -1,3 +1,5 @@
+package leetcode_work;
+
 import java.util.HashMap;
 
 public class Has_duplicate {
